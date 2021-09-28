@@ -1,15 +1,23 @@
 #include <bits/stdc++.h>
-using namespace std; 
+using namespace std;
 
-int main() {
-    string s;
-    cin>>s;
-
-    int n = s.length();
-    for (int i = 0; i < n; i++) {
-        for ( int j = 1 ; j <= n - i; j++) {
-            cout<<s.substr(i,j)<<endl;
-        }
+void printSubsequence(string input, string output)
+{
+    if (input.empty()) {
+        cout << output << endl;
+        return;
     }
+ 
+    printSubsequence(input.substr(1), output + input[0]);
+    printSubsequence(input.substr(1), output);
+}
+
+int main()
+{
+    string output = "";
+    string str; cin>>str;
+ 
+    printSubsequence(str, output);
+ 
     return 0;
-    }
+}
